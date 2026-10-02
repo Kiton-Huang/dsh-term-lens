@@ -19,6 +19,8 @@ const SUITES = [
   { name: '诊断通道 /diag', file: 'diag-check.mjs', llm: false },
   { name: '客户端投递（崩溃安全）', file: 'client-sync.mjs', llm: false },
   { name: '客户端 bundle 契约', file: 'client-contract.mjs', llm: false },
+  // 盯「反复检索同一个词不出解释按钮」那个真实 bug 的回归
+  { name: '反复检索 / 历史快捷键', file: 'repeat-term.mjs', llm: false },
   // 离线部分是缓存指纹与提示词断言；SMOKE_LLM=1 时会真的跑三档风格做对比
   { name: '风格生效（缓存指纹 + 提示词）', file: 'style-effect.mjs', llm: false, llmOptional: true },
   { name: '解释质量（inContext / 语言锁定）', file: 'quality.mjs', llm: true },

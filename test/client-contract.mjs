@@ -588,7 +588,8 @@ check('搜索图标能渲染出 svg', () => {
 check('浮卡头部是 历史 / 固定 / 关闭 三个按钮（设置按钮已按需求撤掉）', () => {
   assert.ok(!source.includes('function GearIcon'), '齿轮图标应当已删除')
   assert.ok(!/onSettings/.test(source), '不该再有设置按钮的接线')
-  assert.ok(/title: '历史记录（侧边栏）'/.test(source), '缺少历史按钮')
+  // 前缀匹配：标题后面还附了快捷键提示，写死全文会因为改文案而误报
+  assert.ok(/title: '历史记录（侧边栏）/.test(source), '缺少历史按钮')
   assert.ok(/title: '关闭 \(Esc\)'/.test(source), '缺少关闭按钮')
   // 也不该有缩放按钮
   assert.ok(!/缩小 \(Ctrl\+-\)/.test(source), '不该有缩小按钮')
@@ -648,7 +649,9 @@ check('历史是与浮卡并列的独立入口', () => {
   assert.ok(/function toggleHistoryPanel/.test(source), '缺少 toggleHistoryPanel')
   assert.ok(/function HistoryIcon/.test(source), '缺少 HistoryIcon 组件')
   assert.ok(/h\(HistoryIcon/.test(source), '没有渲染 HistoryIcon')
-  assert.ok(/title: '历史记录（侧边栏）'/.test(source), '缺少历史按钮的提示文案')
+  assert.ok(/title: '历史记录（侧边栏）/.test(source), '缺少历史按钮的提示文案')
+  // 提示里要带上快捷键，否则 Alt+H 没人知道
+  assert.ok(/Alt\+H/.test(source), '历史按钮的提示里没有标出快捷键 Alt+H')
 })
 check('历史面板只有列表，不重复渲染当前术语的详情', () => {
   const i = source.indexOf('function PanelContent')
