@@ -1,0 +1,15 @@
+# ============================================================================
+# dsh-term-lens —— DSH bundle patch（挂载声明）
+# ============================================================================
+# DSH 启动时按 bundle 层栈叠加各插件 patch，本文件把 term-lens 的两半
+# （宿主半 lib/index.js / 浏览器半 lib/client.js）插入 profile 的配置树。
+#
+# 安装（本地开发用 link，不需要手改 profile 的 package.json）：
+#   dsh plugin --profile desktop add link:D:\桌面\dsh-term-lens
+#
+# 也可以直接在 Web GUI 的 Plugins 页里装。
+# ============================================================================
+
+- insert:
+    - id: dsh-term-lens
+      name: dsh-term-lens

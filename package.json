@@ -1,0 +1,72 @@
+{
+  "name": "dsh-term-lens",
+  "version": "0.1.0",
+  "description": "选中术语即得解释:本地 Ollama 模型流式作答、词旁浮卡速览、可固定到右栏成为完整卡片(定义/语境/要点/坑/相关术语),带磁盘缓存、会话查词历史、相关术语链式查询与联网搜索降级。不占用对话上下文,不消耗 API 额度。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "glossary",
+    "term",
+    "ollama",
+    "local-llm",
+    "explain"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "docs",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18",
+    "dsh": ">=0.2.0-rc.2"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.4"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    }
+  },
+  "license": "MIT",
+  "author": "Kiton-Huang <kitonhuang@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kiton-Huang/dsh-term-lens.git"
+  },
+  "homepage": "https://github.com/Kiton-Huang/dsh-term-lens#readme",
+  "bugs": {
+    "url": "https://github.com/Kiton-Huang/dsh-term-lens/issues"
+  },
+  "scripts": {
+    "test": "node test/run-all.mjs"
+  },
+  "packageManager": "pnpm@10.34.6+sha512.7e1ae66a83a9143c118cc1944f37cc4f2b8acddeda4b001cfa78908f6e46e45e15292739ca6c9d026426cc757e9318cc98c5551d6a16c165097b0028ba87b4e6"
+}

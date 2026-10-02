@@ -1,0 +1,21 @@
+# 依赖
+node_modules/
+
+# 解包出来的 DSH 源码快照（tools/asar-ls.mjs extract 的产物，26 MB / 580 文件）
+# 只是本地排查用的参照物，不属于本插件，也不要提交
+build/
+
+# 内部设计文档，不公开
+DESIGN.md
+
+# 本地临时产物
+tmp/
+*.log
+*.tgz
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

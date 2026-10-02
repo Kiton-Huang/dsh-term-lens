@@ -1,0 +1,14 @@
+# 统一按 LF 存储与检出。
+#
+# 仓库里的源文件本来就是纯 LF，而 Windows 上 git 默认 core.autocrlf=true，
+# 会在检出时换成 CRLF —— 结果是「clone 下来什么都没干，git status 就说一堆文件被改了」。
+# 写死 eol=lf 之后，无论谁在什么系统上 clone，看到的都是同一份字节。
+* text=auto eol=lf
+
+# 二进制文件不要做任何换行转换
+*.png binary
+*.jpg binary
+*.ico binary
+*.gif binary
+*.woff binary
+*.woff2 binary
